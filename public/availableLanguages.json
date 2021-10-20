@@ -1,0 +1,16 @@
+[
+  {
+    "languages": [
+      {
+        "country": "Britain",
+        "language": "English",
+        "code": "en"
+      },
+      {
+        "country": "Japan",
+        "language": "Japanese",
+        "code": "ja"
+      }
+    ]
+  }
+]

@@ -9,7 +9,7 @@ import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
 
 import { initialLanguageSetup, languageSetup } from '../utils/utils';
 
-const HomePage = () => {
+const HomePage = ({ languages }) => {
   // const [store, dispatch] = useReducer(languageSetup, initialLanguageSetup);
   // const { sourceLanguage, targetLanguage, wordInput } = store;
 
@@ -24,8 +24,10 @@ const HomePage = () => {
     setTargetLanguage(event.target.value);
   };
 
+  // console.log(languages);
+  
   return (
-    <div class="homePage">
+    <div className="homePage">
       <Container>
         <h1>Kids' Translator Cards</h1>
           <div className="columns">
@@ -42,8 +44,9 @@ const HomePage = () => {
                     onChange={handleChangeSourceLanguage}
                   >
                     <MenuItem value=""></MenuItem>
-                    <MenuItem value="en">English</MenuItem>
-                    <MenuItem value="ja">Japanese</MenuItem>
+                    {languages.map((item, i) => (
+                      <MenuItem key={i} value={item.code}>{item.language}</MenuItem>
+                    ))}
                   </Select>
                 </FormControl>
               </div>
@@ -68,8 +71,10 @@ const HomePage = () => {
                     label="To"
                     onChange={handleChangeTargetLanguage}
                   >
-                    <MenuItem value="ja">Japanese</MenuItem>
-                    <MenuItem value="en">English</MenuItem>
+                    <MenuItem value=""></MenuItem>
+                    {languages.map((item, i) => (
+                      <MenuItem key={i} value={item.code}>{item.language}</MenuItem>
+                    ))}
                   </Select>
                 </FormControl>
               </div>
