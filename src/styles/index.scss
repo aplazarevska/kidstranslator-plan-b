@@ -1,0 +1,38 @@
+body {
+  margin: 0;
+}
+
+/* Pages */
+.homePage,
+.resultPage {
+  text-align: center;
+}
+
+.columns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.column-left,
+.column-middle,
+.column-right,
+.column-full {
+  text-align: center;
+  margin: 2em 0;
+}
+
+.column-left,
+.column-right {
+  width: 40%;
+}
+
+.column-middle {
+  width: 20%;
+}
+
+.column-full {
+  width: 100%;
+  flex-grow: 3;
+}
