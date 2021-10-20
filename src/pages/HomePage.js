@@ -7,7 +7,8 @@ import Select from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
 import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
 
-import { initialLanguageSetup, languageSetup } from '../utils/utils';
+// import { initialLanguageSetup, languageSetup } from '../utils/utils';
+import Flag from '../components/Flag';
 
 const HomePage = ({ languages }) => {
   // const [store, dispatch] = useReducer(languageSetup, initialLanguageSetup);
@@ -15,16 +16,23 @@ const HomePage = ({ languages }) => {
 
   const [sourceLanguage, setSourceLanguage] = useState('');
   const [targetLanguage, setTargetLanguage] = useState('');
+  const [fromCountry, setFromCountry] = useState('');
+  const [toCountry, setToCountry] = useState('');
+
+  const getCountryCode = (lang) => {
+    const langInfo = languages.filter(item => item.languageCode === lang);
+    return langInfo[0].countryCode;
+  };
 
   const handleChangeSourceLanguage = (event) => {
     setSourceLanguage(event.target.value);
+    setFromCountry(getCountryCode(event.target.value));
   };
 
   const handleChangeTargetLanguage = (event) => {
     setTargetLanguage(event.target.value);
+    setToCountry(getCountryCode(event.target.value));
   };
-
-  // console.log(languages);
   
   return (
     <div className="homePage">
@@ -43,15 +51,15 @@ const HomePage = ({ languages }) => {
                     label="From"
                     onChange={handleChangeSourceLanguage}
                   >
-                    <MenuItem value=""></MenuItem>
                     {languages.map((item, i) => (
-                      <MenuItem key={i} value={item.code}>{item.language}</MenuItem>
+                      <MenuItem key={i} value={item.languageCode}>{item.language}</MenuItem>
                     ))}
                   </Select>
                 </FormControl>
               </div>
               <div>
                 {/* Flag component */}
+                {fromCountry && <Flag countryCode={fromCountry} />}
               </div>
             </div>
 
@@ -71,15 +79,15 @@ const HomePage = ({ languages }) => {
                     label="To"
                     onChange={handleChangeTargetLanguage}
                   >
-                    <MenuItem value=""></MenuItem>
                     {languages.map((item, i) => (
-                      <MenuItem key={i} value={item.code}>{item.language}</MenuItem>
+                      <MenuItem key={i} value={item.languageCode}>{item.language}</MenuItem>
                     ))}
                   </Select>
                 </FormControl>
               </div>
               <div>
                 {/* Flag component */}
+                {toCountry && <Flag countryCode={toCountry} />}
               </div>
             </div>
 

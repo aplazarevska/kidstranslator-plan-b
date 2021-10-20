@@ -3,13 +3,15 @@
     "languages": [
       {
         "country": "Britain",
+        "countryCode": "GB",
         "language": "English",
-        "code": "en"
+        "languageCode": "en"
       },
       {
         "country": "Japan",
+        "countryCode": "JP",
         "language": "Japanese",
-        "code": "ja"
+        "languageCode": "ja"
       }
     ]
   }
